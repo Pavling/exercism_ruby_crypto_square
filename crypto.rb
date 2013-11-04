@@ -15,4 +15,9 @@ class Crypto
   def plaintext_segments
     normalize_plaintext.scan(%r(.{1,#{size}}))
   end
+
+  def ciphertext
+    split_segments = plaintext_segments.map{|e|e.split('')}
+    split_segments.shift.zip(*split_segments).join
+  end
 end
